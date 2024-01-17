@@ -15,21 +15,23 @@ def part1_rnn_hyperparams():
         lr_sched_patience=0,
     )
 
-    hypers['batch_size'] = 1000 
+    hypers['batch_size'] = 256 
     hypers['seq_len'] = 60
     hypers['h_dim'] = 512
     hypers['n_layers'] = 3
     hypers['dropout'] = 0.2
-    hypers['learn_rate'] = 0.001
-    hypers['lr_sched_factor'] = 0.01
+    hypers['learn_rate'] = 0.0001
+    hypers['lr_sched_factor'] = 0.1
     hypers['lr_sched_patience'] = 4
+
     return hypers
 
 
 def part1_generation_params():
 
-    start_seq = "once upon a time"
-    temperature = 0.0001
+    start_seq = "Lord"
+    temperature = 0.5
 
     return start_seq, temperature
+
 
