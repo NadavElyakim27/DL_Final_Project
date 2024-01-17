@@ -10,7 +10,7 @@ In this assignment I implemented generative text model with a deep multilayer RN
 
 - This assignment requires running on GPU-enabled hardware. The run in the notebook done in google colab. Use the `checkpoint` to download the trained model back to your computer for inference and submission.
 - The repo is based on a assigment as part of the DEEP LEARNING course at Reichman University
-- 
+  
 ## Contents
 - [Sequence Models](#part1)
     - [Text generation with a char-level RNN](#part1_1)
