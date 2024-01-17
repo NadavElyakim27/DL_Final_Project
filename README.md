@@ -4,7 +4,8 @@ Raichman Univercity
 
 ## Introduction
 
-In this assignment I implemented generative text model with a deep multilayer RNN network based on GRU from **scratch** . The GRU was trained on a corpus of Shakespeare books and then I generate my own work ;).
+In this assignment I implemented generative text model with a deep multilayer RNN network based on GRU from **scratch** . The GRU was trained on a corpus of Shakespeare books and then I generate my own work ;). 
+Got accuracy of 63% on test set
 
 ## General Guidelines
 
