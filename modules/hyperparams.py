@@ -15,15 +15,14 @@ def part1_rnn_hyperparams():
         lr_sched_patience=0,
     )
 
-    hypers['batch_size'] = 1024 
-    hypers['seq_len'] = 32
-    hypers['h_dim'] = 64
+    hypers['batch_size'] = 1000 
+    hypers['seq_len'] = 60
+    hypers['h_dim'] = 512
     hypers['n_layers'] = 3
     hypers['dropout'] = 0.2
-    hypers['learn_rate'] = 0.0001
+    hypers['learn_rate'] = 0.001
     hypers['lr_sched_factor'] = 0.01
-    hypers['lr_sched_patience'] = 10
-
+    hypers['lr_sched_patience'] = 4
     return hypers
 
 

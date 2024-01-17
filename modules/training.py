@@ -66,8 +66,9 @@ class Trainer(abc.ABC):
 
         best_acc = 0
         epochs_without_improvement = 0
-
+        prev_loss = None
         checkpoint_filename = None
+        
         if checkpoints is not None:
             checkpoint_filename = f"{checkpoints}.pt"
             Path(os.path.dirname(checkpoint_filename)).mkdir(exist_ok=True)
@@ -88,27 +89,26 @@ class Trainer(abc.ABC):
             self._print(f"--- EPOCH {epoch+1}/{num_epochs} ---", verbose)
 
             # train
-            train_result = self.train_epoch(dl_train,**kw) 
-            test_result = self.test_epoch(dl_test,**kw) 
-
-            epoch_train_loss = np.mean(train_result.losses)
-            epoch_test_loss = np.mean(test_result.losses)
-
-            train_loss.append(epoch_train_loss)
+            train_result = self.train_epoch(dl_train, verbose=verbose,**kw) 
+            test_result = self.test_epoch(dl_test,verbose=verbose,**kw) 
+            train_loss.extend(train_result.losses)
             train_acc.append(train_result.accuracy)
-            test_loss.append(epoch_test_loss)
+            test_loss.extend(test_result.losses)
             test_acc.append(test_result.accuracy)
                        
+            actual_num_epochs += 1
+           
             # early stopping
-            if test_result.accuracy > best_acc:
+            avg_loss = sum(test_result.losses) / len(test_result.losses)
+            if prev_loss is None or avg_loss < prev_loss:
                 best_acc = test_result.accuracy
                 epochs_without_improvement = 0
+                save_checkpoint = True
             else:
-                epochs_without_improvement +=1
-                
-            if early_stopping is not None:
-                if epochs_without_improvement>=early_stopping:
-                    break       
+                epochs_without_improvement += 1
+                if early_stopping and early_stopping <= epochs_without_improvement:
+                    break
+            prev_loss = avg_loss    
 
             # Save model checkpoint if requested
             if save_checkpoint and checkpoint_filename is not None:

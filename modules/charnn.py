@@ -280,7 +280,7 @@ class MultilayerGRU(nn.Module):
                 z = nn.Sigmoid()(gru_layers[0](layer_states[i]) + gru_layers[1](x))
                 r = nn.Sigmoid()(gru_layers[2](layer_states[i]) + gru_layers[3](x))
                 g = nn.Tanh()(gru_layers[4](r*layer_states[i]) + gru_layers[5](x))
-                h = z*layer_states[i] + z*g
+                h = z*layer_states[i] + (1-z)*g
                 layer_states[i] = h
                 x = self.dropout(h)
 
