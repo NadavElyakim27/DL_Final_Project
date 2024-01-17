@@ -1,4 +1,4 @@
-# Deep Learning - Assignment
+# Deep Learning - LLM Assignment
 
 Raichman Univercity
 
