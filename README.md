@@ -22,3 +22,6 @@ Got accuracy of 63% on test set
     - [Generating text by sampling](#part1_6)
     - [Training](#part1_7)
     - [Generating a work of art](#part1_8)
+
+## Thanks
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FNadavElyakim27%2FGRU-generative-text-model.git&labelColor=%232ccce4&countColor=%23555555&style=flat)
